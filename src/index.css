@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: local('Dancing Script'), url(./Fonts/DancingScript-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: 'Merriweather';
+    src: local('Merriweather'), url(./Fonts/MerriweatherSans-Regular.ttf);
+}
