@@ -8,10 +8,10 @@ import Gambar6 from '../Images/Rectangle 24.png'
 
 function Gallery() {
     return (
-        <div className='md:flex md:w-full md:h-full justify-center items-center'>
-            <div className='flex flex-col w-auto h-auto justify-center items-center py-24 px-24'>
+        <div className='md:flex md:w-full md:h-full justify-center items-center  py-24 ' id='gallery'>
+            <div className='flex flex-col w-full h-full justify-center items-center px-24 '>
                 <text className='font-script text-4xl font-bold'>Galeri Cinta Kami</text>
-                <div className='flex flex-row w-auto h-auto py-8'>
+                <div className='flex flex-row w-full h-full justify-center items-center py-8'>
                     <div className='flex flex-col w-auto h-auto space-y-2'>
                         <div>
                             <img src={Gambar1} alt='card 1'></img>

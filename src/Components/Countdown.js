@@ -35,7 +35,7 @@ function Countdown() {
         startTimer();
     }, [])
     return (
-        <div className='md:flex md:w-full md:h-full justify-center items-center py-24'>
+        <div className='md:flex md:w-full md:h-full justify-center items-center py-24' id='waktu'>
             <div className='flex flex-col w-full h-60 py-8 px-8 justify-center items-center space-y-2'>
                 <div className='flex flex-col items-center justify-center space-y-2'>
                     <text className='font-script text-4xl font-bold'>Pernikahan Kami akan Dilaksanakan Pada</text>
@@ -46,21 +46,21 @@ function Countdown() {
                     </div>
                 </div>
                 <div className='flex flex-row w-auto h-auto space-x-8 justify-center items-center py-4'>
-                    <div className='flex flex-col md:w-36 md:h-28 bg-chocolate text-white justify-center items-center rounded-2xl'>
+                    <div className='flex flex-col md:w-36 md:h-36 bg-chocolate text-white justify-center items-center rounded-full'>
                         <text className='font-sans text-3xl font-bold'>{timerDays}</text>
-                        <text className='font-sans text-xl font-light'>Hari</text>
+                        <text className='font-sansLight text-xl'>Hari</text>
                     </div>
-                    <div className='flex flex-col md:w-36 md:h-28 bg-chocolate text-white justify-center items-center rounded-2xl'>
+                    <div className='flex flex-col md:w-36 md:h-36 bg-chocolate text-white justify-center items-center rounded-full'>
                         <text className='font-sans text-3xl font-bold'>{timerHours}</text>
-                        <text className='font-sans text-xl font-light'>Jam</text>
+                        <text className='font-sansLight text-xl'>Jam</text>
                     </div>
-                    <div className='flex flex-col md:w-36 md:h-28 bg-chocolate text-white justify-center items-center rounded-2xl'>
+                    <div className='flex flex-col md:w-36 md:h-36 bg-chocolate text-white justify-center items-center rounded-full'>
                         <text className='font-sans text-3xl font-bold'>{timerMinutes}</text>
-                        <text className='font-sans text-xl font-light'>Menit</text>
+                        <text className='font-sansLight text-xl'>Menit</text>
                     </div>
-                    <div className='flex flex-col md:w-36 md:h-28 bg-chocolate text-white justify-center items-center rounded-2xl'>
+                    <div className='flex flex-col md:w-36 md:h-36 bg-chocolate text-white justify-center items-center rounded-full'>
                         <text className='font-sans text-3xl font-bold'>{timerSeconds}</text>
-                        <text className='font-sans text-xl font-light'>Detik</text>
+                        <text className='font-sansLight text-xl '>Detik</text>
                     </div>
                 </div>
             </div>

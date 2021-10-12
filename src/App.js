@@ -12,10 +12,12 @@ import Wishes from './Components/Wishes';
 import Gallery from './Components/Gallery';
 import Footer from './Components/Footer';
 import { React} from 'react';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
     <>
+    <Navbar />
     <Landing />
     <CurchQuotes />
     <GroomBride />
