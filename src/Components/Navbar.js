@@ -1,8 +1,8 @@
 import {React, useState, useEffect, Fragment, useRef} from 'react'
 import IconInv from '../Images/Rectangle 673.png'
 import { Dialog, Transition } from '@headlessui/react'
-import QRCode from 'qrcode.react'
-import axios from 'axios'
+// import QRCode from 'qrcode.react'
+// import axios from 'axios'
 import {Link} from 'react-scroll'
 
 function Navbar() {
@@ -14,12 +14,12 @@ function Navbar() {
     const closeQR = () => {
         setOpen(false);
         setOpenQR(false);
-        setTextQR('')
+        // setTextQR('')
         setTextData('')
         console.log('closeQR')
     }
     const cancelButtonRef = useRef(null)
-    const [textQR, setTextQR] = useState('');
+    // const [textQR, setTextQR] = useState('');
 
     const [textData, setTextData] = useState('');
     const [openQR, setOpenQR] = useState(false)
@@ -28,52 +28,52 @@ function Navbar() {
         setTextData(temp);
         console.log(textData);
     }
-    let textID;
-    const GetID = () => {
-        let textCode = textData
-        // console.log(textCode)
-        axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
-        .then(res => {
-            if(typeof res.data == "object")
-            {
-                console.log(res.data)
-                textID = res.data.id;
-                console.log(textCode);
-                console.log(textID);
-                // QRCode.toDataURL(res.data.id).then((setTextQR));
-                setOpenQR(!openQR)
-            }else{
-                alert(res.data);
-            }
-        })
-        return(
-            <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
-                <p className='font-sans font-light text-base text-black'>QR CODE</p>
-                <QRCode value={textID} />
-                <img className='w-auto h-auto' src={textID} alt='qrcode'/>
-                <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
-                <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
-            </div>
-        )
-    }
-    const handleSubmit = () => {
-        GetID();
-        // if (textID != null) {
-        //     QRCode.toDataURL(textID).then((setTextQR));
-        // }
-        setOpenQR(!openQR)
-    }
-    const renderQR = () => {
-        return(
-            <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
-                <p className='font-sans font-light text-base text-black'>QR CODE</p>
-                <QRCode value={textID} />
-                <img className='w-auto h-auto' src={textQR} alt='qrcode'/>
-                <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
-                <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
-            </div>
-        )
-    }
+    // let textID;
+    // const GetID = () => {
+    //     let textCode = textData
+    //     // console.log(textCode)
+    //     axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
+    //     .then(res => {
+    //         if(typeof res.data == "object")
+    //         {
+    //             console.log(res.data)
+    //             textID = res.data.id;
+    //             console.log(textCode);
+    //             console.log(textID);
+    //             // QRCode.toDataURL(res.data.id).then((setTextQR));
+    //             setOpenQR(!openQR)
+    //         }else{
+    //             alert(res.data);
+    //         }
+    //     })
+    //     return(
+    //         <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
+    //             <p className='font-sans font-light text-base text-black'>QR CODE</p>
+    //             <QRCode value={textID} />
+    //             <img className='w-auto h-auto' src={textID} alt='qrcode'/>
+    //             <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
+    //             <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
+    //         </div>
+    //     )
+    // }
+    // const handleSubmit = () => {
+    //     GetID();
+    //     // if (textID != null) {
+    //     //     QRCode.toDataURL(textID).then((setTextQR));
+    //     // }
+    //     setOpenQR(!openQR)
+    // }
+    // const renderQR = () => {
+    //     return(
+    //         <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
+    //             <p className='font-sans font-light text-base text-black'>QR CODE</p>
+    //             <QRCode value={textID} />
+    //             <img className='w-auto h-auto' src={textQR} alt='qrcode'/>
+    //             <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
+    //             <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
+    //         </div>
+    //     )
+    // }
     // const ref = useDetectClickOutside({ onTriggered: closeQR })
     useEffect(() => {
         if(open === false)
@@ -150,11 +150,11 @@ function Navbar() {
                                     <p>* Nomor handphone kamu tidak akan kami sebarkan. Nomor handphone hanya untuk membuka QR Code di hari Pernikahan kami.</p>
                                 </div>
                                 <div className='py-4'>
-                                    <button className='w-40 h-12 text-white bg-black rounded-md font-sans items-center justify-center text-white' onClick={handleSubmit}>MASUK</button>
+                                    <button className='w-40 h-12 text-white bg-black rounded-md font-sans items-center justify-center text-white' /*onClick={handleSubmit}*/>MASUK</button>
                                 </div>
                                 {openQR && (
                                     <div>
-                                        {renderQR()}
+                                        {/* {renderQR()} */}
                                     </div>
                                 )}
                             </div>
