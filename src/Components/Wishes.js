@@ -48,7 +48,7 @@ function Wishes() {
                     /*width={1200}*/ dynamicHeight={true}
                     autoPlay 
                     infiniteLoop 
-                    selectedItem={3}
+                    selectedItem={3} 
                     centerMode={true} showStatus={false}
                     centerSlidePercentage={33} showThumbs={false}>
                         {renderWishesCard()}
