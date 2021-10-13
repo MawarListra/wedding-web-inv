@@ -41,23 +41,23 @@ function Navbar() {
         if (!isNaN(temp)) {
             setTextData(temp)
         }else{
-            alert('Hanya bisa memasukkan angka!')
+            alert('Hanya bisa memasukkan angka saja!')
         }
         console.log(textData);
     }
     // let textID;
-    const GetID = () => {
+    const GetID =() => {
         let textCode = textData
         // console.log(textCode)
-        axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
+         axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
         .then(res => {
             if(typeof res.data == "object")
             {
                 setOpenQR(!openQR)
                 if(res.data.data != null)
                 {
-                    console.log(res.data)
-                    setTextQR(toString(res.data.id));
+                    console.log(res.data.data)
+                    setTextQR(res.data.data.id);
                     console.log(textCode);
                     setOpenSubmit(false)
                     setOpenErr(false)
@@ -173,7 +173,7 @@ function Navbar() {
                                         {openSuccess && (
                                             <div className='flex flex-col w-auto h-auto justify-center items-center space-y-4'>
                                                 <p className='font-sans font-light text-base text-black'>QR CODE</p>
-                                                <QRCode value={textQR} />
+                                                <QRCode value={textQR.toString()} />
                                                 <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
                                             </ div>
                                         )}
