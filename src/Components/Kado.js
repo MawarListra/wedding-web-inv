@@ -7,7 +7,7 @@ function Kado() {
     // setValue('0382146210')
     const [copied, setCopied] = useState(false);
     const handleClick = ()=>{
-        alert('Copied to clipboard')
+        alert('Nomor rekening berhasil di salin')
     }
     // copied = false;
     return (

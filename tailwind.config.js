@@ -14,13 +14,15 @@ module.exports = {
       width : {
         'xl' : '900px',
         'cardW' : '400px',
-        'groom' : '1030px'
+        'groom' : '1030px',
+        'location' : '639px'
       },
       height: {
         'xl' : '500px',
         'cardH' : '450px',
         'hero' : '686px',
-        'groom' : '198px'
+        'groom' : '198px',
+        'location' : '418px'
       },
       backgroundImage: {
         'landing-image' : "url('Images/LandingPage.png')",
@@ -36,7 +38,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      PointerEvent: ['focus','hover']
+    },
   },
   plugins: [],
 }

@@ -29,9 +29,9 @@ function Wishes() {
                 return (
                     <div key={row.id}>
                         <div className={temp} >
-                            <div className='w-auto h-full pt-16 pb-24 pl-10 pr-16 text-center'>
-                                <h1 className='font-sans text-2xl text-black'>{row.name}</h1>
-                                <p className='font-sansLight text-sm pt-2 text-black'>{row.message}</p>
+                            <div className='flex flex-col w-full h-full pt-16 pb-24 pl-10 pr-16 text-center'>
+                                <h1 className='break-all font-sans text-2xl text-black'>{row.name}</h1>
+                                <p className='break-all font-sansLight text-sm pt-2 text-black px-2'>{row.message}</p>
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,9 @@
 import {React, useState, useEffect, Fragment, useRef} from 'react'
 import IconInv from '../Images/Rectangle 673.png'
+import IconScanned from '../Images/Scanned.png'
 import { Dialog, Transition } from '@headlessui/react'
-// import QRCode from 'qrcode.react'
-// import axios from 'axios'
+import QRCode from 'qrcode.react'
+import axios from 'axios'
 import {Link} from 'react-scroll'
 
 function Navbar() {
@@ -10,70 +11,66 @@ function Navbar() {
     const [open, setOpen] = useState(false);
     const togglePopup = () => {
         setOpen(!open);
+        setOpenInput(!openInput)
+        setOpenSubmit(!openSubmit)
     }
     const closeQR = () => {
         setOpen(false);
         setOpenQR(false);
+        setOpenInput(false)
+        setOpenSubmit(false)
+        setOpenSuccess(false)
+        setOpenErr(false)
+        setOpenScanned(false)
         // setTextQR('')
         setTextData('')
         console.log('closeQR')
     }
     const cancelButtonRef = useRef(null)
-    // const [textQR, setTextQR] = useState('');
+    const [textQR, setTextQR] = useState('');
 
     const [textData, setTextData] = useState('');
     const [openQR, setOpenQR] = useState(false)
+    const [openErr, setOpenErr] = useState(false)
+    const [openSuccess, setOpenSuccess] = useState(false)
+    const [openInput, setOpenInput] = useState(false)
+    const [openSubmit, setOpenSubmit] = useState(false)
+    const [openScanned, setOpenScanned] = useState(false)
     const handleChange = (e) => {
         const temp = e.target.value
-        setTextData(temp);
+        if (!isNaN(temp)) {
+            setTextData(temp)
+        }else{
+            alert('Hanya bisa memasukkan angka!')
+        }
         console.log(textData);
     }
     // let textID;
-    // const GetID = () => {
-    //     let textCode = textData
-    //     // console.log(textCode)
-    //     axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
-    //     .then(res => {
-    //         if(typeof res.data == "object")
-    //         {
-    //             console.log(res.data)
-    //             textID = res.data.id;
-    //             console.log(textCode);
-    //             console.log(textID);
-    //             // QRCode.toDataURL(res.data.id).then((setTextQR));
-    //             setOpenQR(!openQR)
-    //         }else{
-    //             alert(res.data);
-    //         }
-    //     })
-    //     return(
-    //         <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
-    //             <p className='font-sans font-light text-base text-black'>QR CODE</p>
-    //             <QRCode value={textID} />
-    //             <img className='w-auto h-auto' src={textID} alt='qrcode'/>
-    //             <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
-    //             <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
-    //         </div>
-    //     )
-    // }
-    // const handleSubmit = () => {
-    //     GetID();
-    //     // if (textID != null) {
-    //     //     QRCode.toDataURL(textID).then((setTextQR));
-    //     // }
-    //     setOpenQR(!openQR)
-    // }
-    // const renderQR = () => {
-    //     return(
-    //         <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
-    //             <p className='font-sans font-light text-base text-black'>QR CODE</p>
-    //             <QRCode value={textID} />
-    //             <img className='w-auto h-auto' src={textQR} alt='qrcode'/>
-    //             <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
-    //             <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
-    //         </div>
-    //     )
-    // }
+    const GetID = () => {
+        let textCode = textData
+        // console.log(textCode)
+        axios.get("https://api.wedding.chicodefive.com/v1/User/generateidforqr/" + textCode)
+        .then(res => {
+            if(typeof res.data == "object")
+            {
+                setOpenQR(!openQR)
+                if(res.data.data != null)
+                {
+                    console.log(res.data)
+                    setTextQR(toString(res.data.id));
+                    console.log(textCode);
+                    setOpenSuccess(!openSuccess)
+                    // setOpenInput(false)
+                    setOpenSubmit(false)
+                    // setOpenScanned(true)
+                }else {
+                    setOpenErr(!openErr)
+                }
+            }else{
+                console(res.data);
+            }
+        })
+    }
     // const ref = useDetectClickOutside({ onTriggered: closeQR })
     useEffect(() => {
         if(open === false)
@@ -139,22 +136,50 @@ function Navbar() {
                         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all lg:my-8 lg:align-middle lg:max-w-2xl lg:w-full" >
                         <div className="bg-white px-24 pt-5 pb-4 lg:p-6 lg:pb-4 justify-center items-center">
                             <div className="lg:flex lg:items-center justify-center">
-                            <div className="mt-3 text-center lg:mt-0 lg:text-center py-8 justify-center items-center space-y-4">
-                                <Dialog.Title as="h1" className="text-base font-sans leading-6 font-sans justify-center items-center px-4">
-                                Silahkan masukkan Nomor Handphone kalian untuk membuka QR Code yang di gunakan untuk masuk pada Hari Pernikahan  
-                                </Dialog.Title>
-                                <div className="mt-2 flex flex-row items-center pt-4 px-8">
-                                    <input className='w-full h-16 border border-gray-300 justify-center text-center items-center text-2xl' type='text' value={textData} onChange={handleChange}></input>
-                                </div>
-                                <div className='font-sans text-xs text-gray-400 font-light text-justify px-8'>
-                                    <p>* Nomor handphone kamu tidak akan kami sebarkan. Nomor handphone hanya untuk membuka QR Code di hari Pernikahan kami.</p>
-                                </div>
-                                <div className='py-4'>
-                                    <button className='w-40 h-12 text-white bg-black rounded-md font-sans items-center justify-center text-white' /*onClick={handleSubmit}*/>MASUK</button>
-                                </div>
+                            <div className="mt-3 text-center lg:mt-0 lg:text-center py-8 justify-center items-center space-y-2">
+                                {openInput && (
+                                    <div className='flex flex-col justify-center items-center space-y-4'>
+                                        <Dialog.Title as="h1" className="text-base font-sans leading-6 font-sans justify-center items-center px-4">
+                                        Silahkan masukkan Nomor Handphone kalian untuk membuka QR Code yang di gunakan untuk masuk pada Hari Pernikahan  
+                                        </Dialog.Title>
+                                        <div className="mt-2 flex flex-row items-center pt-4 px-8">
+                                            <input className='w-full h-16 border border-gray-300 justify-center text-center items-center text-2xl' type='text' value={textData} onChange={handleChange}></input>
+                                        </div>
+                                        <div className='font-sans text-xs text-gray-400 font-light text-justify px-8'>
+                                            <p>* Nomor handphone kamu tidak akan kami sebarkan. Nomor handphone hanya untuk membuka QR Code di hari Pernikahan kami.</p>
+                                        </div>
+                                        {openSubmit && (
+                                            <div className='py-4'>
+                                                <button className='w-40 h-12 text-white bg-black rounded-md font-sans items-center justify-center text-white' onClick={GetID}>MASUK</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                                 {openQR && (
-                                    <div>
-                                        {/* {renderQR()} */}
+                                    <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
+                                        {openScanned && (
+                                            <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
+                                                <div className='w-auto h-auto'>
+                                                    <img src={IconScanned} alt='scanned'/>
+                                                </div>
+                                                <div className='flex flex-col w-auto h-auto justify-center items-center space-y-2 py-4'>
+                                                    <h1>Selamat Menikmati</h1>
+                                                    <p>Terima kasih telah hadir di pernikahan Sara & Kelvin. Selamat Menikmati Pernikahan Kami.</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {openSuccess && (
+                                            <div className='flex flex-col w-auto h-auto justify-center items-center space-y-4'>
+                                                <p className='font-sans font-light text-base text-black'>QR CODE</p>
+                                                <QRCode value={textQR} />
+                                                <p className='font-sans font-light text-yellow-700 text-xs'>QR Code ini bersifat pribadi. Jangan di berikan atau di tunjukan kepada orang lain karena QR Code alat untuk hadir pada saat Pernikahan Sara & Kelvin</p>
+                                            </ div>
+                                        )}
+                                        {openErr && (
+                                            <div className='flex flex-col w-auto h-auto justify-center items-center'>
+                                                <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>

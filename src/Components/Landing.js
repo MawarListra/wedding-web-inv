@@ -14,7 +14,7 @@ function Landing() {
                     <h1 className='font-sans lg:text-2xl sm:text-xs font-bold'>Perjalanan Cinta</h1>
                     <div className='lg:w-48 sm:w-24 h-0 border-2 bg-white'></div>
                 </div>
-                <div className='flex flex-row w-auto h-auto py-8 space-x-40 justify-center items-center font-script text-white'>
+                <div className='flex flex-row w-auto h-auto py-8 space-x-24 justify-center items-center font-script text-white'>
                     <div className='flex flex-col justify-center items-center'>
                         <h1 className='lg:text-6xl sm:text-xl font-bold'><CountUp end={3440} duration={5}></CountUp></h1>
                         <p className='lg:text-2xl sm:text-xs Lightfont-light'>Hari</p>

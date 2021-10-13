@@ -47,27 +47,38 @@ function SendingWishes() {
         setMessage('')
         // tempelate = '1'
     }
+    const stylesR = {
+        radioGray: {
+            background: '0.5px solid #DCD6D8',
+        },
+        radioPink: {
+          border: "10px solid #EF959D",
+        },
+        radioRed: {
+          border: "10px solid #90DDD0",
+        }
+      };
     return (
         <div className='flex md:w-full md:h-full justify-center items-center py-20' id='kirim-ucapan'>
             <div className='flex flex-col w-9/12 h-full justify-center items-center'>
                 <text className='py-8 font-script text-4xl font-bold'>Kirim Ucapan Untuk Kami</text>
                 <div className='flex flex-col w-auto h-auto space-y-2 py-2 items-center'>
-                    <text className='font-sans text-xl  italic' >Nama</text>
-                    <input className='md:w-xl h-14 border-gray-200 border-2 font-sansLight text-xl items-justify' value={name} onChange={handleInputNameChange}></input>
+                    <text className='font-sans text-xl  italic'>Nama</text>
+                    <input className='md:w-xl h-14 border-gray-200 border-2 font-sansLight text-xl items-justify rounded-md  focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent' value={name} onChange={handleInputNameChange}></input>
                 </div>
                 <div className='flex flex-col w-auto h-auto space-y-2 py-2 items-center'>
                     <text className='font-sans text-xl  italic' >Pesan</text>
-                    <textarea className='md:w-xl h-48 border-gray-200 border-2 font-sansLight text-xl  pt-2 items-justify' value={message} onChange={handleInputMessageChange}></textarea>
+                    <textarea className='md:w-xl h-48 border-gray-200 border-2 font-sansLight text-xl  pt-2 items-justify rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent' value={message} onChange={handleInputMessageChange}></textarea>
                 </div>
                 <div className='flex flex-col w-auto h-auto px-8 items-center'>
                     <text className='font-sans text-xl italic '>Pilih kartu ucapan</text>
                     <div className='flex flex-row'>
                         <div className='flex flex-row justify-center'>
-                            <input type='radio' value='1' onChange={handleCardChange} checked={tempelate === '1'}/>
+                            <input style={stylesR.radioGray} type='radio' value='1' onChange={handleCardChange} checked={tempelate === '1'}/>
                             <img src={Card1} alt='card 1'></img>
                         </div>
                         <div className='flex flex-row justify-center'>
-                            <input type='radio' value='2' onChange={handleCardChange} checked={tempelate === '2'}/>
+                            <input className='checked:bg-gray-600 checked:border-transparent' type='radio' value='2' onChange={handleCardChange} checked={tempelate === '2'}/>
                             <img src={Card2} alt='card 2'></img>
                         </div>
                         <div className='flex flex-row justify-center'>
