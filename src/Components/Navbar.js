@@ -59,12 +59,14 @@ function Navbar() {
                     console.log(res.data)
                     setTextQR(toString(res.data.id));
                     console.log(textCode);
-                    setOpenSuccess(!openSuccess)
-                    // setOpenInput(false)
                     setOpenSubmit(false)
+                    setOpenErr(false)
+                    setOpenSuccess(true)
+                    // setOpenInput(false)
                     // setOpenScanned(true)
                 }else {
-                    setOpenErr(!openErr)
+                    setOpenSuccess(false)
+                    setOpenErr(true)
                 }
             }else{
                 console(res.data);
