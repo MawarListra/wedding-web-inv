@@ -47,17 +47,17 @@ function SendingWishes() {
         setMessage('')
         // tempelate = '1'
     }
-    const stylesR = {
-        radioGray: {
-            background: '0.5px solid #DCD6D8',
-        },
-        radioPink: {
-          border: "10px solid #EF959D",
-        },
-        radioRed: {
-          border: "10px solid #90DDD0",
-        }
-      };
+    // const stylesR = {
+    //     radioGray: {
+    //         background: '0.5px solid #DCD6D8',
+    //     },
+    //     radioPink: {
+    //       border: "10px solid #EF959D",
+    //     },
+    //     radioRed: {
+    //       border: "10px solid #90DDD0",
+    //     }
+    //   };
     return (
         <div className='flex md:w-full md:h-full justify-center items-center py-20' id='kirim-ucapan'>
             <div className='flex flex-col w-9/12 h-full justify-center items-center'>

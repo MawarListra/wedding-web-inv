@@ -1,4 +1,4 @@
-import {React, useState, useEffect, Fragment, useRef} from 'react'
+import {React, useState, useEffect, Fragment, useRef, useCallback} from 'react'
 import IconInv from '../Images/Rectangle 673.png'
 import IconInvM from '../Images/Rectangle 673(1).png'
 import IconScanned from '../Images/Scanned.png'
@@ -88,7 +88,7 @@ const Navbar = ({toggle}) => {
         }
     }
     // const ref = useDetectClickOutside({ onTriggered: closeQR })
-    const CekKehadiran =(textQR) => {
+    const CekKehadiran = useCallback(() => {
         let textCek = textQR
             console.log(textCek)
         if(textCek === '0')
@@ -121,17 +121,50 @@ const Navbar = ({toggle}) => {
                 }
             })
         }
-    }
+    }, [textQR, openQR, textTemp]);
     useEffect(() => {
         if(open === false)
         {
-            setOpenQR(false)
+            setOpen(false)
             setTextQR('0');
         }else if(textQR !== '0' && textTemp !== '0'){
-            setTextQR(textQR)
-            CekKehadiran(textQR);
+            setTextQR(textQR => textQR)
+            CekKehadiran(textQR)
+            
+        // let textCek = textQR
+        // console.log(textCek)
+        //     if(textCek === '0')
+        //     {
+        //         console.log('Nomor belum masuk')
+        //     }else if(textCek !== '0')
+        //     {
+        //         axios.get("https://api.wedding.chicodefive.com/v1/User/checkhadir/" + textCek)
+        //         .then(resp => {
+        //             if(typeof resp.data == "object")
+        //             {
+        //                 setOpenQR(!openQR)
+        //                 if(resp.data.data != null)
+        //                 {
+        //                     console.log(resp.data.data)
+        //                     setTextTemp(resp.data.data);
+        //                     if(textTemp.toString() === '1')
+        //                     {
+        //                         setOpenInput(false)
+        //                         setOpenSubmit(false)
+        //                         setOpenScanned(true)
+        //                     }else{
+        //                         console.log('Belum Hadir')
+        //                     }
+        //                 }else {
+        //                     console.log('Data null')
+        //                 }
+        //             }else{
+        //                 console(resp.data.data);
+        //             }
+        //         })
+        //     }
         }
-    }, [open, textQR])
+    }, [open, textQR, textTemp, CekKehadiran])
     return (
         <div className='flex flex-row md:w-full h-full md:py-12 justify-center font-sansLight'>
             <div className='flex md:w-screen md:h-20 py-5 justify-center items-center px-24' >
