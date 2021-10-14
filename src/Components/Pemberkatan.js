@@ -1,5 +1,6 @@
 import React from 'react'
 import Curch from '../Images/Pemberkatan.png'
+import Curch2 from '../Images/Picture.png'
 import Heart from '../Images/Heart.png'
 
 function Pemberkatan() {
@@ -11,10 +12,13 @@ function Pemberkatan() {
     // };
     return (
         // <div className='flex w-full h-full justify-center items-center py-4'>
-            <div className='flex md:flex-row flex-col w-full h-full justify-center items-center py-16 space-x-2 px-24'>
-                <div className='flex md:w-full w-screen h-full'>
+            <div className='flex md:flex-row flex-col w-full h-full justify-center items-center py-16 space-x-2 md:px-24'>
+                <div className='flex md:w-full w-full h-full '>
                     <img src={Curch} alt='Place' />
                 </div>
+                {/* <div className='md:hidden flex w-full h-full justify-center items-center '>
+                    <img src={Curch2} alt='Place' />
+                </div> */}
                 <div className='flex flex-col md:w-full w-screen h-full justify-center items-center py-8 md:space-y-4 space-y-8 '>
                     <div className='flex md:flex-row flex-col w-auto h-auto justify-center items-center md:space-x-8 md:space-y-0 space-y-8'>
                         <div className='flex flex-col justify-center items-center space-y-2'>

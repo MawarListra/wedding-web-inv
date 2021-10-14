@@ -3,12 +3,12 @@ import Gambar1 from '../Images/Seijin Tuhan.png'
 
 function CurchQuotes() {
     return (
-        <div className='flex md:w-full w-screen py-24 h-full justify-center items-center' id='curchquotes'>
-            <div className='flex md:flex-row flex-col md:w-full md:h-full justify-center items-center md:py-24 md:px-24 '>
-                <div className='w-auto h-full justify-center items-center'>
+        <div className='flex w-full py-8 h-full' id='curchquotes'>
+            <div className='flex md:flex-row flex-col w-full h-full justify-center items-center md:py-24 py-8 md:px-24 md:space-x-8 space-x-0 space-y-8'>
+                <div className='flex md:w-full w-96 h-full justify-center items-center'>
                     <img src={Gambar1} alt='curch'></img>
                 </div>
-                    <div className='md:w-2/5 h-auto py-8 px-8 justify-center items-center text-center'>
+                    <div className='flex flex-col md:w-3/5 w-80 h-full justify-center items-center text-center'>
                         <div className=' flex flex-col space-y-2 items-center justify-center'>
                             <h1 className=' font-script text-yellow-700 md:text-3xl text-xl font-bold'>Seijin Tuhan</h1>
                             <div className='flex w-20 border border-yellow-700 '></div>

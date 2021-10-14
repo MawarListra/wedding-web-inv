@@ -15,14 +15,14 @@
     src: local('Merriweather-Light'), url(./Fonts/MerriweatherSans-Light.ttf);
 }
 .card1 {
-    @apply w-cardW h-cardH bg-card1-image rounded-2xl justify-center items-center;
+    @apply w-cardW h-cardH bg-card1-image border-black rounded-2xl shadow-2xl justify-center items-center bg-contain;
 }
 .card2 {
-    @apply w-cardW h-cardH bg-card2-image rounded-2xl justify-center items-center;
+    @apply w-cardW h-cardH bg-card2-image border-black rounded-2xl shadow-2xl justify-center items-center bg-contain;
 }
 .card3 {
-    @apply w-cardW h-cardH bg-card3-image rounded-2xl justify-center items-center;
+    @apply w-cardW h-cardH bg-card3-image border-black rounded-2xl shadow-2xl justify-center items-center bg-contain;
 }
 .card4 {
-    @apply w-cardW h-cardH bg-card4-image rounded-2xl justify-center items-center;
+    @apply w-cardW h-cardH bg-card4-image border-black rounded-2xl shadow-2xl justify-center items-center bg-contain;
 }

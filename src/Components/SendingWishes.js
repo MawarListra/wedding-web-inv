@@ -1,8 +1,8 @@
 import {React, useState, useEffect} from 'react'
-import Card1 from '../Images/SMALLCARD_1.png'
-import Card2 from '../Images/SMALLCARD_2.png'
-import Card3 from '../Images/SMALLCARD_4.png'
-import Card4 from '../Images/SMALLCARD_3.png'
+import Card1 from '../Images/S6.png'
+import Card2 from '../Images/S4.png'
+import Card3 from '../Images/S7.png'
+import Card4 from '../Images/S3.png'
 import axios from 'axios'
 
 function SendingWishes() {
@@ -70,28 +70,28 @@ function SendingWishes() {
                     <text className='font-sans md:text-xl text-sm  italic' >Pesan</text>
                     <textarea className='md:w-xl h-48 border-gray-200 border-2 font-sansLight text-xl  pt-2 items-justify rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent' value={message} onChange={handleInputMessageChange}></textarea>
                 </div>
-                <div className='flex flex-col w-auto h-auto px-8 items-center'>
+                <div className='flex flex-col w-full h-auto px-8 items-center py-2 space-y-4'>
                     <text className='font-sans md:text-xl text-sm italic '>Pilih kartu ucapan</text>
-                    <div className='flex md:flex-row flex-col'>
-                        <div className='flex flex-row justify-center'>
+                    <div className='flex md:flex-row flex-col md:space-x-8 space-x-0 md:space-y-0 space-y-4'>
+                        <div className='flex flex-row justify-center space-x-2'>
                             <input type='radio' value='1' onChange={handleCardChange} checked={tempelate === '1'}/>
-                            <img src={Card1} alt='card 1'></img>
+                            <img className='shadow-2xl rounded-md' src={Card1} alt='card 1'></img>
                         </div>
-                        <div className='flex flex-row justify-center'>
+                        <div className='flex flex-row justify-center space-x-2'>
                             <input className='border-opacity-0 ring-gray-700 checked:bg-gray-700 checked:border-transparent' type='radio' value='2' onChange={handleCardChange} checked={tempelate === '2'}/>
-                            <img src={Card2} alt='card 2'></img>
+                            <img className='shadow-2xl rounded-md' src={Card2} alt='card 2'></img>
                         </div>
-                        <div className='flex flex-row justify-center'>
+                        <div className='flex flex-row justify-center space-x-2'>
                             <input type='radio' value='3' onChange={handleCardChange} checked={tempelate === '3'}/>
-                            <img src={Card3} alt='card 3'></img>
+                            <img className='shadow-2xl rounded-md' src={Card3} alt='card 3'></img>
                         </div>
-                        <div className='flex flex-row justify-center'>
+                        <div className='flex flex-row justify-center space-x-2'>
                             <input type='radio' value='4' onChange={handleCardChange} checked={tempelate === '4'}/>
-                            <img src={Card4} alt='card 4'></img>
+                            <img className='shadow-2xl rounded-md' src={Card4} alt='card 4'></img>
                         </div>
                     </div>
                 </div>
-                <div className='sm:flex md::w-auto md::h-auto py-8'>
+                <div className='sm:flex md::w-auto md::h-auto py-10'>
                     <button className='md::w-xl w-64 md:h-12 h-14 bg-chocolate text-white justify-center items-center rounded-md font-sansLight md:text-xl md:text-xl text-sm' onClick={PostWishes}>Kirim</button>
                 </div>
             </div>

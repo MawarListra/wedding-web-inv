@@ -11,9 +11,9 @@ function Protokol() {
     return (
         <div className='flex flex-col md:w-full md:h-full justify-center items-center mt-28 py-8  bg-protokol-image bg-cover' id='protokol'>
             <div className='flex flex-col md:w-full w-screen h-full justify-center items-center bg-transparent md:px-24 px-5'>
-                <text className=' flex md:py-8 font-script md:text-4xl text-xl font-bold text-white'>Protokol Kesehatan</text>
-                <div className='md:flex flex-col md:w-full md:h-full py-2 space-y-0 justify-center items-center'>
-                    <div className='md:flex md:flex-row md:space-x-5 py-4 md:space-y-0 space-y-2.5'>
+                <text className=' flex md:py-8 py-4 font-script md:text-4xl text-xl font-bold text-white'>Protokol Kesehatan</text>
+                <div className='md:flex flex-col md:w-full md:h-full py-2 justify-center items-center'>
+                    <div className='md:flex md:flex-row md:space-x-5 md:py-4 py-0 md:space-y-0 space-y-6'>
                         <div className='flex flex-col md:w-cardP md:h-44 h-32 md:rounded-xl rounded-lg justify-center items-center text-center space-y-2 bg-white'>
                             <div className='flex md:w-auto md:h-auto w-14 h-8'>
                                 <img src={Mask} alt='card 1' /*width={72} height={45}*/></img>
@@ -34,7 +34,7 @@ function Protokol() {
                             <text className='font-sans md:text-sm text-xs text-yellow-700 items-center px-2'>Mengecek Suhu Sebelum Masuk ke Lokasi Acara</text>
                         </div>
                     </div>
-                    <div className='flex md:flex-row flex-col md:space-x-5 py-4 md:space-y-0 space-y-2.5'>
+                    <div className='flex md:flex-row flex-col md:space-x-5 py-4 md:space-y-0 space-y-6'>
                         <div className='flex flex-col md:w-cardP md:h-44 h-32 md:rounded-xl rounded-lg justify-center items-center text-center space-y-2 bg-white'>
                             <div className='flex md:w-auto md:h-auto w-10 h-8'>
                                 <img src={WashHand} alt='card 4' /* width={38} height={45}*/></img>

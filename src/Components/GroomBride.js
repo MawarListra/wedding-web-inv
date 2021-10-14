@@ -3,17 +3,17 @@ import Gambar from '../Images/Rectangle 27.png'
 
 function GroomBride() {
     return (
-        <div className='md:flex flex-col w-full h-full'>
-            <div className='flex flex-col w-full h-full justify-center text-center md:px-24 sm:px-5'>
-                <div className='flex flex-col text-white space-y-2'>
+        <div className='flex flex-col w-full h-full overflow-hidden'>
+            <div className='flex flex-col md:w-full w-full h-full justify-center text-center md:px-24'>
+                <div className='flex flex-col text-white space-y-2 md:px-0 px-5'>
                     <text className='font-script md:text-4xl text-xl font-light font-bold text-yellow-700'>Mempelai Pria dan Wanita</text>
                     <text className='font-sansLight md:text-xl text-xs text-black'>Atas Ijin dan Kasih Karunia-Nya, Kami Dengan Berbahagia Mengumumkan Pernikahan Kami </text>
                 </div>
-                <div className='flex flex-col w-full h-full py-8 justify-center items-center'>
-                    <div className='w-full md:h-full h-40 rounded-md'>
+                <div className='flex flex-col md:w-full w-full h-full py-8 justify-center items-center'>
+                    <div className='md:w-full w-96 md:h-full h-40 rounded-xl'>
                         <img src={Gambar} alt='groom bride'></img>
                     </div>
-                    <div className='flex md:flex-row flex-col md:py-8 pt-24 pb-8 md:space-x-12 justify-center items-center'>
+                    <div className='flex md:flex-row flex-col md:py-8 py-4 pt-24 pb-8 md:space-x-12 justify-center items-center'>
                         <div className='flex flex-col h-44 justify-center items-center space-y-2'>
                             <text className='font-sans md:text-2xl text-base font-bold text-yellow-700'>Sara Permata Septiandani</text>
                             <div className='w-24 h-0 bg-chocolate border'></div>
@@ -34,7 +34,7 @@ function GroomBride() {
                             <text className='font-sansLight md:text-base text-xs text-black'>Sienny Oktavien</text>
                         </div>
                     </div>
-                    <div className='flex md:w-groom md:h-groom w-screen h-24 justify-center items-center md:py-24 py-8 bg-quotes-image rounded-md'>
+                    <div className='flex md:w-groom md:h-groom w-full h-24 justify-center items-center md:py-24 py-8 bg-quotes-image rounded-xl bg-cover'>
                         <p className='font-sansLight md:text-xl text-xs text-white text-center px-14'>“Pernikahan yang Sempurna Bukan Berarti Pasangan Sempurna Menjadi Satu. Melainkan Ketika Pasangan yang Tidak Sempurna Belajar Memahami, Menikmati , dan Saling Melengkapi Kekurangan Satu Sama Lain.”</p>
                     </div>
                 </div>

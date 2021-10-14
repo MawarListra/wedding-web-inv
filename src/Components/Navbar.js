@@ -130,44 +130,12 @@ const Navbar = ({toggle}) => {
         }else if(textQR !== '0' && textTemp !== '0'){
             setTextQR(textQR => textQR)
             CekKehadiran(textQR)
-            
-        // let textCek = textQR
-        // console.log(textCek)
-        //     if(textCek === '0')
-        //     {
-        //         console.log('Nomor belum masuk')
-        //     }else if(textCek !== '0')
-        //     {
-        //         axios.get("https://api.wedding.chicodefive.com/v1/User/checkhadir/" + textCek)
-        //         .then(resp => {
-        //             if(typeof resp.data == "object")
-        //             {
-        //                 setOpenQR(!openQR)
-        //                 if(resp.data.data != null)
-        //                 {
-        //                     console.log(resp.data.data)
-        //                     setTextTemp(resp.data.data);
-        //                     if(textTemp.toString() === '1')
-        //                     {
-        //                         setOpenInput(false)
-        //                         setOpenSubmit(false)
-        //                         setOpenScanned(true)
-        //                     }else{
-        //                         console.log('Belum Hadir')
-        //                     }
-        //                 }else {
-        //                     console.log('Data null')
-        //                 }
-        //             }else{
-        //                 console(resp.data.data);
-        //             }
-        //         })
-        //     }
+
         }
     }, [open, textQR, textTemp, CekKehadiran])
     return (
         <div className='flex flex-row md:w-full h-full md:py-12 justify-center font-sansLight'>
-            <div className='flex md:w-screen md:h-20 py-5 justify-center items-center px-24' >
+            <div className='md:flex hidden w-full md:h-20 md:py-5 pb-10 pt-4 justify-center items-center md:px-24' >
                 <div className='cursor-pointer md:hidden ' onClick={toggle}>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -201,6 +169,19 @@ const Navbar = ({toggle}) => {
                 </div>
                 <div className='md:hidden w-24 h-9 justify-center items-center'>
                     <button className='flex w-full h-full justify-center text-base font-sansLight items-center rounded-md bg-chocolate text-white' onClick={togglePopup}>Buka QR</button>
+                </div>
+            </div>
+            <div className='md:hidden flex w-full h-20 py-5 pb-10 pt-4 justify-center items-center space-x-20' >
+                <div className='cursor-pointer md:hidden pr-5' onClick={toggle}>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <div className='md:hidden w-16 h-12 justify-start items-center'>
+                    <img src={IconInvM} alt='Tanda'/>
+                </div>
+                <div className='md:hidden w-24 h-9 justify-center items-center'>
+                    <button className='flex w-full h-full justify-center text-xs font-sansLight items-center rounded-md bg-chocolate text-white' onClick={togglePopup}>Buka QR</button>
                 </div>
             </div>
             <Transition.Root show={open} as={Fragment}>
@@ -257,7 +238,7 @@ const Navbar = ({toggle}) => {
                                     </div>
                                 )}
                                 {openQR && (
-                                    <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
+                                    <div className='flex flex-col w-auto h-auto md:px-8 px-0 justify-center items-center'>
                                         {openScanned && (
                                             <div className='flex flex-col w-auto h-auto px-8 justify-center items-center'>
                                                 <div className='w-auto h-auto'>
@@ -281,7 +262,7 @@ const Navbar = ({toggle}) => {
                                         )}
                                         {openErr && (
                                             <div className='flex flex-col w-auto h-auto justify-center items-center'>
-                                                <p className='font-sans font-light text-red-500 text-xs'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
+                                                <p className='font-sans font-light text-red-500 text-xs md:px-0 px-4'>* Nomor handphone kamu salah atau tidak terdaftar di sistem kami. Jika kalian telah mendapatkan undangan tetapi nomor handphone tidak bisa silahkan menghubungi Admin</p>
                                             </div>
                                         )}
                                     </div>
