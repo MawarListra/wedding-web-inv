@@ -11,29 +11,29 @@ function Pemberkatan() {
     // };
     return (
         // <div className='flex w-full h-full justify-center items-center py-4'>
-            <div className='flex flex-row w-full h-full justify-center items-center py-16 space-x-2 px-24'>
-                <div className='flex w-full h-full'>
+            <div className='flex md:flex-row flex-col w-full h-full justify-center items-center py-16 space-x-2 px-24'>
+                <div className='flex md:w-full w-screen h-full'>
                     <img src={Curch} alt='Place' />
                 </div>
-                <div className='flex flex-col z-10 w-full h-full justify-center items-center py-8 space-y-4'>
-                    <div className='flex flex-row w-auto h-auto justify-center items-center space-x-8'>
+                <div className='flex flex-col md:w-full w-screen h-full justify-center items-center py-8 md:space-y-4 space-y-8 '>
+                    <div className='flex md:flex-row flex-col w-auto h-auto justify-center items-center md:space-x-8 md:space-y-0 space-y-8'>
                         <div className='flex flex-col justify-center items-center space-y-2'>
-                            <text className='font-sans text-2xl font-bold text-black'>Pemberkatan</text>
+                            <text className='font-sans md:text-2xl text-xl font-bold text-black'>Pemberkatan</text>
                             <img src={Heart} alt='heart' />
-                            <text className='font-sans text-xl text-black'>Minggu, 21 November 2021</text>
-                            <text className='font-sansLight text-base text-black '>16.00 WIB</text>
+                            <text className='font-sans md:text-xl text-base text-black'>Minggu, 21 November 2021</text>
+                            <text className='font-sansLight md:text-base text-xs text-black '>16.00 WIB</text>
                         </div>
                         <div className='flex flex-col justify-center items-center space-y-2'>
-                            <text className='font-sans text-2xl font-bold text-black'>Resepsi</text>
+                            <text className='font-sans md:text-2xl text-xl font-bold text-black'>Resepsi</text>
                             <img src={Heart} alt='heart' />
-                            <text className='font-sans text-xl text-black'>Minggu, 21 November 2021</text>
-                            <text className='font-sansLight text-base text-black '>18.00 WIB</text>
+                            <text className='font-sans md:text-xl text-base text-black'>Minggu, 21 November 2021</text>
+                            <text className='font-sansLight md:text-base text-xs text-black '>18.00 WIB</text>
                         </div>
                     </div>
                     <div className='flex flex-col justify-center items-center space-y-2'>
-                        <text className='font-sans text-2xl font-bold text-black'>Lokasi</text>
-                        <text className='font-sans text-xl text-black'>Poolside Adhiwangsa Hotel & Convention Hall</text>
-                        <p className='text-sm text-yellow-700 font-sans underline italic cursor-pointer' onClick={handleOnClick}>Lihat di Google Maps</p>
+                        <text className='font-sans md:text-2xl text-xl font-bold text-black'>Lokasi</text>
+                        <text className='font-sans md:text-xl text-base text-black justify-center items-center'>Poolside Adhiwangsa Hotel & Convention Hall</text>
+                        <p className='text-sm text-yellow-700 font-sans underline italic cursor-pointer ' onClick={handleOnClick}>Lihat di Google Maps</p>
                     </div>
                 </div>
             </div>

@@ -61,18 +61,18 @@ function SendingWishes() {
     return (
         <div className='flex md:w-full md:h-full justify-center items-center py-20' id='kirim-ucapan'>
             <div className='flex flex-col w-9/12 h-full justify-center items-center'>
-                <text className='py-8 font-script text-4xl font-bold'>Kirim Ucapan Untuk Kami</text>
+                <text className='py-8 font-script md:text-4xl text-lg font-bold'>Kirim Ucapan Untuk Kami</text>
                 <div className='flex flex-col w-auto h-auto space-y-2 py-2 items-center'>
-                    <text className='font-sans text-xl  italic' >Nama</text>
+                    <text className='font-sans md:text-xl text-sm  italic' >Nama</text>
                     <input className='md:w-xl h-14 border-gray-200 border-2 font-sansLight text-xl items-justify rounded-md  focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent' value={name} onChange={handleInputNameChange}></input>
                 </div>
                 <div className='flex flex-col w-auto h-auto space-y-2 py-2 items-center'>
-                    <text className='font-sans text-xl  italic' >Pesan</text>
+                    <text className='font-sans md:text-xl text-sm  italic' >Pesan</text>
                     <textarea className='md:w-xl h-48 border-gray-200 border-2 font-sansLight text-xl  pt-2 items-justify rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent' value={message} onChange={handleInputMessageChange}></textarea>
                 </div>
                 <div className='flex flex-col w-auto h-auto px-8 items-center'>
-                    <text className='font-sans text-xl italic '>Pilih kartu ucapan</text>
-                    <div className='flex flex-row'>
+                    <text className='font-sans md:text-xl text-sm italic '>Pilih kartu ucapan</text>
+                    <div className='flex md:flex-row flex-col'>
                         <div className='flex flex-row justify-center'>
                             <input type='radio' value='1' onChange={handleCardChange} checked={tempelate === '1'}/>
                             <img src={Card1} alt='card 1'></img>
@@ -91,8 +91,8 @@ function SendingWishes() {
                         </div>
                     </div>
                 </div>
-                <div className='sm:flex sm:w-auto sm:h-auto py-8'>
-                    <button className='sm:w-xl sm:h-12 bg-chocolate text-white justify-center items-center rounded-md font-sansLight text-xl ' onClick={PostWishes}>Kirim</button>
+                <div className='sm:flex md::w-auto md::h-auto py-8'>
+                    <button className='md::w-xl w-64 md:h-12 h-14 bg-chocolate text-white justify-center items-center rounded-md font-sansLight md:text-xl md:text-xl text-sm' onClick={PostWishes}>Kirim</button>
                 </div>
             </div>
         </div>

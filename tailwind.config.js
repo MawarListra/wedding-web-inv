@@ -15,7 +15,8 @@ module.exports = {
         'xl' : '900px',
         'cardW' : '400px',
         'groom' : '1030px',
-        'location' : '639px'
+        'location' : '639px',
+        'cardP' : '360px'
       },
       height: {
         'xl' : '500px',
