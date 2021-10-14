@@ -1,33 +1,25 @@
 
 import './App.css';
-import Landing from './Components/Landing';
-import CurchQuotes from './Components/CurchQuotes';
-import GroomBride from './Components/GroomBride';
-import Countdown from './Components/Countdown';
-import Pemberkatan from './Components/Pemberkatan';
-import Protokol from './Components/Protokol';
-import Kado from './Components/Kado';
-import SendingWishes from './Components/SendingWishes';
-import Wishes from './Components/Wishes';
-import Gallery from './Components/Gallery';
-import Footer from './Components/Footer';
-import { React} from 'react';
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import index from './Pages';
+import Login from './Pages/Admin/Login';
+import Homepage from './Pages/Admin/Homepage';
+import EditTamu from './Pages/Admin/EditTamu';
+import Kartu from './Pages/Admin/Kartu';
 function App() {
   return (
-    <>
-    <Landing />
-    <CurchQuotes />
-    <GroomBride />
-    <Countdown />
-    <Pemberkatan />
-    <Protokol />
-    <Kado />
-    <SendingWishes />
-    <Wishes />
-    <Gallery />
-    <Footer />
-    </>
+   <Router>
+     <div>
+       <Switch>
+        <Route path="/" exact component={index} />
+        <Route path="/Admin" component={Login} />
+        <Route path="/AdminDashboard" component={Homepage} />
+        <Route path="/edittamu/:id" component={EditTamu} />
+        <Route path="/kartu/:id" component={Kartu} />
+       </Switch>
+     </div>
+   </Router>
   );
 }
 
