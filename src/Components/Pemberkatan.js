@@ -1,6 +1,6 @@
 import React from 'react'
 import Curch from '../Images/Pemberkatan.png'
-import Curch2 from '../Images/Picture.png'
+// import Curch2 from '../Images/Picture.png'
 import Heart from '../Images/Heart.png'
 
 function Pemberkatan() {
