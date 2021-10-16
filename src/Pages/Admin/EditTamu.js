@@ -1,9 +1,6 @@
-import React, { Fragment, useRef, useEffect } from 'react'
-import { TiDelete } from "react-icons/ti";
-import { Dialog, Transition } from '@headlessui/react'
+import React, { useEffect } from 'react'
 import axios from 'axios';
 import { useParams, Link } from "react-router-dom";
-import Homepage from './Homepage';
 
 
 function EditTamu() {
@@ -21,7 +18,7 @@ function EditTamu() {
     useEffect(() => {
         getUserById();
         //console.log(id);
-    }, []);
+    });
     const getUserById = async () => {
 
         const config = {
@@ -34,12 +31,12 @@ function EditTamu() {
             .then(response => {
                 const datas = response.data.data;
                 datas.map(tamu => (
-                    setNama(tamu.name),
+                   ( setNama(tamu.name),
                     setNoTlp(tamu.phone),
                     setAlamat(tamu.address),
                     setHadir(tamu.statushadir),
-                    setSovenir(tamu.statussouvenir)
-                ))
+                    setSovenir(tamu.statussouvenir))
+                ));
 
 
                 console.log(response.data.data);
@@ -67,7 +64,7 @@ function EditTamu() {
             .put(`${url}/v1/User/update/${id}`, data, config)
             .then((res) => {
                 console.log(res);
-                if (res.status == 200) {
+                if (res.status === 200) {
                     window.location = "/AdminDashboard";
                 }
             })

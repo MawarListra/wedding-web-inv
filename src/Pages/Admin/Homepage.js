@@ -18,7 +18,7 @@ export default function Homepage() {
         window.location = '/admin';
     }
 
-    if (localStorage.getItem("token") == null) {
+    if (localStorage.getItem("token") === null) {
         window.location = '/admin';
     }
     return (
@@ -47,7 +47,7 @@ export default function Homepage() {
                         <nav >
                             <ul className="font-poppins font-normal text-lg">
                                 <li className="pb-5">
-                                    {pages == 0 ? (<button onClick={() => setPages(0)} className="flex items-center text-primary bg-warnarow py-4 px-2 mx-auto rounded-xl">
+                                    {pages === 0 ? (<button onClick={() => setPages(0)} className="flex items-center text-primary bg-warnarow py-4 px-2 mx-auto rounded-xl">
                                         <RiBarChart2Line className="border-2 border-primary text-primary rounded-md w-5 h-5 mr-3" />
                                         Buat tamu undangan
                                     </button>) : (<button onClick={() => setPages(0)} className="flex items-center py-4 px-2 mx-auto rounded-xl">
@@ -56,9 +56,9 @@ export default function Homepage() {
                                     </button>)}
                                 </li>
                                 <li className="pb-12">
-                                    <button onClick={() => setPages(1)} className={pages == 1 ? ("flex bg-warnarow py-4 px-2 mx-auto rounded-xl") : ("flex py-4 px-2 mx-auto rounded-xl")}>
-                                        <img src={pages == 1 ? walletIconcolor : walletIcon} className={pages == 1 ? ("text-primary mr-3") : ("text-second mr-3")} />
-                                        <div className={pages == 1 ? ("mr-9 text-primary") : ("mr-9")}>
+                                    <button onClick={() => setPages(1)} className={pages === 1 ? ("flex bg-warnarow py-4 px-2 mx-auto rounded-xl") : ("flex py-4 px-2 mx-auto rounded-xl")}>
+                                        <img alt='wallet' src={pages === 1 ? walletIconcolor : walletIcon} className={pages === 1 ? ("text-primary mr-3") : ("text-second mr-3")} />
+                                        <div className={pages === 1 ? ("mr-9 text-primary") : ("mr-9")}>
                                             Ucapan dan Doa
                                         </div>
                                     </button>
@@ -66,7 +66,7 @@ export default function Homepage() {
                                 <li className="flex items-center text-red-500 absolute inset-x-0 bottom-5">
                                     <button className="flex" onClick={() => logout()}>
                                         <MdOutlineLogout className="text-2xl mx-3" />
-                                        <a >Log Out</a>
+                                        Log Out
                                     </button>
                                 </li>
                             </ul>
@@ -82,11 +82,11 @@ export default function Homepage() {
                         <button aria-label="Open menu" title="Open menu" onClick={() => setClosed(false)}><myIcon.BiMenu className="text-4xl" /></button>
                     ) : (<button aria-label="Close menu" title="Close menu" onClick={() => setClosed(true)} className="hidden"><myIcon.BiMenuAltRight className="text-4xl" /></button>)}
                     <div className="flex flex-grow items-center justify-between px-3">
-                        <h1 className="font-medium font-poppins text-2xl">{pages == 0 ? "Kelola Undangan Tamu" : "Ucapan dan Doa"}</h1>
+                        <h1 className="font-medium font-poppins text-2xl">{pages === 0 ? "Kelola Undangan Tamu" : "Ucapan dan Doa"}</h1>
                     </div>
                 </header>
                 <div className="flex-grow flex flex-col min-h-screen">
-                    {pages == 0 ? <DaftarTamu pilih={pages} /> : <UcapanDoa pilih={pages} />}
+                    {pages === 0 ? <DaftarTamu pilih={pages} /> : <UcapanDoa pilih={pages} />}
                 </div>
             </div>
 

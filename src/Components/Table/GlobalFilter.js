@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable, useGlobalFilter, useAsyncDebounce, usePagination } from "react-table";
+import { useAsyncDebounce } from "react-table";
 import {FiSearch} from "react-icons/fi";
 
 function GlobalFilter({
@@ -7,7 +7,6 @@ function GlobalFilter({
     globalFilter,
     setGlobalFilter,
 }) {
-    const count = preGlobalFilteredRows.length
     const [value, setValue] = React.useState(globalFilter)
 
     const onChange = useAsyncDebounce(value => {

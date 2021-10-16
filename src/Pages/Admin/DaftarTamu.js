@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { useTable } from 'react-table'
+import React, { useState, useEffect,useCallback } from 'react'
 import Table from '../../Components/Table/Table';
 import * as BoxIcon from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import axios from 'axios';
-import ModalForm from '../../Components/Table/ModalForm';
 import { Link } from 'react-router-dom';
 
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
-    const [open, setOpen] = useState(false);
-   
+
 
     useEffect(() => {
         const config = {
@@ -26,7 +23,7 @@ function DaftarTamu({ pilih }) {
                 console.log(err);
             })
 
-        
+
     }, [])
 
     // const getUserById = async (id) => {
@@ -38,20 +35,20 @@ function DaftarTamu({ pilih }) {
     //     }
     //     await axios.get(`https://api.wedding.chicodefive.com/v1/User/${id}`, config)
     //         .then(response => {
-                
+
     //             setOpen(true);
     //             setByID(response.data.data);
     //             console.log(response.data.data);
     //             byID.map((as)=>(
     //                 console.log(as.name)
     //             ))
-               
+
     //         }).catch((err) => {
     //             console.log(err);
     //         })
     // }
 
-    const deleteUser = (id) => {
+    const deleteUser = useCallback((id) => {
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
@@ -62,11 +59,11 @@ function DaftarTamu({ pilih }) {
             .then((response) => {
                 setTamu(
                     tamu.filter((val) => {
-                        return val.id != id;
+                        return val.id !== id;
                     })
                 );
             });
-    };
+    },[tamu]);
     const COLUMNS = React.useMemo(() => [
         {
             Header: 'No',
@@ -96,8 +93,8 @@ function DaftarTamu({ pilih }) {
             accessor: 'statushadir',
             mystyle: "max-w-kecil",
             Cell: (data) => {
-                return <div className={data.value == 0 ? "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-medium lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
-                    {data.value != 0 ? "Hadir" : "Belum Hadir"}
+                return <div className={data.value === 0 ? "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-medium lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
+                    {data.value !== 0 ? "Hadir" : "Belum Hadir"}
                 </div>;
             }
         },
@@ -106,8 +103,8 @@ function DaftarTamu({ pilih }) {
             accessor: 'statussouvenir',
             mystyle: "max-w-kecil",
             Cell: (data) => {
-                return <div className={data.value == 0 ? "flex justify-center rounded-lg mx-auto py-2 font-poppins font-normal lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
-                    {data.value != 0 ? "Sudah" : "Belum"}
+                return <div className={data.value === 0 ? "flex justify-center rounded-lg mx-auto py-2 font-poppins font-normal lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
+                    {data.value !== 0 ? "Sudah" : "Belum"}
                 </div>;
             }
 
@@ -140,7 +137,7 @@ function DaftarTamu({ pilih }) {
                 </div>;
             },
         },
-    ]
+    ],[deleteUser]
     );
 
     return (

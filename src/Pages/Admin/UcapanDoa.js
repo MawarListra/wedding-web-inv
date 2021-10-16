@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { useTable } from 'react-table'
+import React, { useState, useEffect } from 'react'
 import Table from '../../Components/Table/Table';
-import * as BoxIcon from "react-icons/bi";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -63,7 +61,7 @@ function UcapanDoa({pilih}) {
                 </div>;
             },
         },
-    ]
+    ],[]
     );
 
     return (

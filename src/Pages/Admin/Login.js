@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {AiOutlineEyeInvisible,AiOutlineEye} from "react-icons/ai"
 
 export default class Login extends Component {
@@ -31,7 +30,7 @@ export default class Login extends Component {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
         //localStorage.setItem("id",res.data.id);
-        if (res.status == 200) {
+        if (res.status === 200) {
           window.location = "/AdminDashboard";
         }
       })
@@ -43,7 +42,7 @@ export default class Login extends Component {
     return (
       <div className="items-center bg-gradient-to-l from-blue-500 to-black font-monserat">
         <div className="flex h-screen">
-        <div className="w-1/5 m-auto">
+        <div className="w-1/3 m-auto">
           <form
             onSubmit={this.handleSubmit}
             className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
@@ -52,7 +51,7 @@ export default class Login extends Component {
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-xl font-normal mb-2"
-                for="username"
+                htmlFor="username"
               >
                 Username
               </label>
@@ -67,7 +66,7 @@ export default class Login extends Component {
             <div className=" mb-6">
               <label
                 className="block text-gray-700 text-xl font-normal mb-2"
-                for="password"
+                htmlFor="password"
               >
                 Password
               </label>
@@ -75,11 +74,11 @@ export default class Login extends Component {
               <input
                 className="flex shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
-                type={this.state.isOpen==false?("password"):("text")}
+                type={this.state.isOpen===false?("password"):("text")}
                 placeholder="Password"
                 onChange={(e) => (this.password = e.target.value)}
               />
-             {this.state.isOpen==false?( <button onClick={this.handleOpenModal}>
+             {this.state.isOpen===false?( <button onClick={this.handleOpenModal}>
                 <AiOutlineEyeInvisible className="absolute inset-y-1 right-3 text-2xl text-mata" />
               </button>):( <button onClick={this.handleCloseModal}>
                 <AiOutlineEye className="absolute inset-y-1 right-3 text-2xl text-mata" />

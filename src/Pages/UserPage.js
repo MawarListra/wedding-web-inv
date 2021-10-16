@@ -11,7 +11,7 @@ import Protokol from '../Components/Protokol';
 import SendingWishes from '../Components/SendingWishes';
 import Wishes from '../Components/Wishes';
 
-function index(props) {
+function UserPage(props) {
     return (
         <div>
             <Landing />
@@ -29,4 +29,4 @@ function index(props) {
     );
 }
 
-export default index;
+export default UserPage;
