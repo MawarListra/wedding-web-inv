@@ -93,7 +93,7 @@ function EditTamu() {
                     <div>
                         <div className="font-semibold font-poppins text-sm text-warnaborder">Nomor Handphone</div>
                         <input type="tel"
-                            pattern="[0-9]{>20}"
+                            pattern="[0-9]*"
                             value={noTlp}
                             onChange={(e) => setNoTlp(e.target.value)} className="border rounded-lg py-3 px-4 w-72 focus:outline-none mb-8"></input>
                     </div>

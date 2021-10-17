@@ -90,7 +90,7 @@ function ModalForm({ closeModal, open }) {
                                             <div>
                                                 <div className="text-#727286">Nomor Handphone</div>
                                                 <input type="tel"
-                                                    pattern="[0-9]{>1}"
+                                                    pattern="[0-9]"
                                                     value={noTlp}
                                                     onChange={(e) => setNoTlp(e.target.value)} className="flex bg-abuabu border rounded-lg py-3 px-4 w-72 focus:outline-none mb-8"></input>
                                             </div>
