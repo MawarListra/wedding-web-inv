@@ -65,17 +65,21 @@ const Navbar = ({toggle}) => {
                         console.log(res.data.data)
                         setTextQR(res.data.data.id);
                         console.log(textCode);
-                        setOpenSubmit(false)
-                        // if(openSuccess === false)
-                        // {
-                            // setOpenSuccess(true)
-                        // }else{
+                        if((res.data.data.statushadir).toString() === '1')
+                        {
+                            setOpenScanned(true)
+                            setOpenSubmit(false)
+                            setOpenSuccess(false)
+                            setOpenErr(false)
+                            setOpenInput(false)
+                        }else if ((res.data.data.statushadir).toString() === '0'){
+                            
+                            setOpenScanned(false)
+                            setOpenSubmit(false)
                             setOpenSuccess(true)
-                        // }
-                        setOpenErr(false)
-                        // CekKehadiran(textQR);
-                        // setOpenInput(false)
-                        // setOpenScanned(true)
+                            setOpenErr(false)
+                            // setOpenInput(false)
+                        }
                     }else {
                         setOpenSuccess(false)
                         setOpenErr(true)
@@ -100,16 +104,23 @@ const Navbar = ({toggle}) => {
             .then(resp => {
                 if(typeof resp.data == "object")
                 {
-                    setOpenQR(!openQR)
+                    // setOpenQR(!openQR)
                     if(resp.data.data != null)
                     {
                         console.log(resp.data.data)
                         setTextTemp(resp.data.data);
                         if(textTemp.toString() === '1')
                         {
-                            setOpenInput(false)
-                            setOpenSubmit(false)
-                            setOpenScanned(true)
+                            if(openQR === true)
+                            {
+                                setOpenInput(false)
+                                setOpenSubmit(false)
+                                setOpenScanned(true)
+                                setOpenSuccess(false)
+                                setOpenErr(false)
+                            }else{
+                                console.log('Hadir')
+                            }
                         }else{
                             console.log('Belum Hadir')
                         }
