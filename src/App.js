@@ -6,14 +6,12 @@ import Login from './Pages/Admin/Login';
 import Homepage from './Pages/Admin/Homepage';
 import EditTamu from './Pages/Admin/EditTamu';
 import Kartu from './Pages/Admin/Kartu';
-import UserPage from './Pages/UserPage';
 function App() {
   return (
    <Router>
      <div>
        <Switch>
-        <Route path="/" exact component={UserPage} />
-        <Route path="/Admin" component={Login} />
+        <Route path="/" exact component={Login} />
         <Route path="/AdminDashboard" component={Homepage} />
         <Route path="/edittamu/:id" component={EditTamu} />
         <Route path="/kartu/:id" component={Kartu} />

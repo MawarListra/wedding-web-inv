@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
+    const [count,setCount] = useState([]);
 
 
     useEffect(() => {
@@ -22,7 +23,14 @@ function DaftarTamu({ pilih }) {
             }).catch((err) => {
                 console.log(err);
             })
-
+            
+        axios.get('https://api.wedding.chicodefive.com/v1/User/getallcounter', config)
+            .then(response => {
+                setCount(response.data);
+                console.log(response.data);
+            }).catch((err) => {
+                console.log(err);
+            })
 
     }, [])
 
@@ -93,8 +101,8 @@ function DaftarTamu({ pilih }) {
             accessor: 'statushadir',
             mystyle: "max-w-kecil",
             Cell: (data) => {
-                return <div className={data.value === 0 ? "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-medium lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
-                    {data.value !== 0 ? "Hadir" : "Belum Hadir"}
+                return <div className={data.value === '0' ? "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-medium lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
+                    {data.value !== '0' ? "Hadir" : "Belum Hadir"}
                 </div>;
             }
         },
@@ -103,8 +111,8 @@ function DaftarTamu({ pilih }) {
             accessor: 'statussouvenir',
             mystyle: "max-w-kecil",
             Cell: (data) => {
-                return <div className={data.value === 0 ? "flex justify-center rounded-lg mx-auto py-2 font-poppins font-normal lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
-                    {data.value !== 0 ? "Sudah" : "Belum"}
+                return <div className={data.value === '0' ? "flex justify-center rounded-lg mx-auto py-2 font-poppins font-normal lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
+                    {data.value !== '0' ? "Sudah" : "Belum"}
                 </div>;
             }
 
@@ -143,7 +151,7 @@ function DaftarTamu({ pilih }) {
     return (
 
         <div className="mx-10">
-            <Table columns={COLUMNS} data={tamu} pilih={pilih} />
+            <Table columns={COLUMNS} data={tamu} pilih={pilih} banyak={count} />
         </div>
     )
 }

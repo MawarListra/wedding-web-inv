@@ -36,6 +36,7 @@ export default class Login extends Component {
       })
       .catch((err) => {
         console.log(err);
+        this.setState(alert('Username atau Password salah.'))
       });
   };
   render() {

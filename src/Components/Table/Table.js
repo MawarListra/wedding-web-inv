@@ -9,7 +9,7 @@ import ModalForm from "./ModalForm";
 
 
 
-function Table({ columns, data, pilih }) {
+function Table({ columns, data, pilih, banyak }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -59,11 +59,11 @@ function Table({ columns, data, pilih }) {
                         Daftar Tamu
                     </div>
                     <div className="text-base font-poppins font-normal mb-3">
-                        38 dari {data.length} Tamu telah hadir
+                        {banyak.resultHadir} dari {data.length} Tamu telah hadir
                     </div>
                     <div className="border-b-2"></div>
                     <div className="text-base font-poppins font-normal mt-3">
-                        38 dari {data.length} Tamu telah dapat Souvenir
+                    {banyak.resultSouvenir} dari {data.length} Tamu telah dapat Souvenir
                     </div>
                 </div>) : (<div>
                     <div className="text-2xl font-poppins font-semibold text-primary mt-5">

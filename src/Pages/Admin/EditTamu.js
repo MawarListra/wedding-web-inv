@@ -16,22 +16,17 @@ function EditTamu() {
 
 
     useEffect(() => {
-        getUserById();
-        //console.log(id);
-    });
-    const getUserById = async () => {
-
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
                 'Content-Type': 'application/json',
             },
         }
-        await axios.get(`${url}/v1/User/${id}`, config)
+        axios.get(`${url}/v1/User/${id}`, config)
             .then(response => {
                 const datas = response.data.data;
                 datas.map(tamu => (
-                   ( setNama(tamu.name),
+                    (setNama(tamu.name),
                     setNoTlp(tamu.phone),
                     setAlamat(tamu.address),
                     setHadir(tamu.statushadir),
@@ -43,7 +38,7 @@ function EditTamu() {
             }).catch((err) => {
                 console.log(err);
             })
-    }
+    },[id]);
 
     const editUser = async (e) => {
         e.preventDefault();
