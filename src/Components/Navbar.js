@@ -91,6 +91,43 @@ const Navbar = ({toggle}) => {
             })
         }
     }
+
+
+    const checkHadiran =(textCek) => {
+        console.log("masuk sini")
+        axios.get("https://api.wedding.chicodefive.com/v1/User/checkhadir/" + textCek)
+            .then(resp => {
+                if(typeof resp.data == "object")
+                {
+                    // setOpenQR(!openQR)
+                    if(resp.data.data != null)
+                    {
+                        console.log(resp.data.data)
+                        setTextTemp(resp.data.data);
+                        if(resp.data.data === '1')
+                        {
+                            if(openQR === true)
+                            {
+                                setOpenInput(false)
+                                setOpenSubmit(false)
+                                setOpenScanned(true)
+                                setOpenSuccess(false)
+                                setOpenErr(false)
+                            }else{
+                                console.log('Hadir')
+                            }
+                        }else{
+                            console.log('Belum Hadir')
+                        }
+                    }else {
+                        console.log('Data null')
+                    }
+                }else{
+                    console(resp.data.data);
+                }
+            })
+    }
+
     // const ref = useDetectClickOutside({ onTriggered: closeQR })
     const CekKehadiran = useCallback(() => {
         let textCek = textQR
@@ -138,12 +175,11 @@ const Navbar = ({toggle}) => {
         {
             setOpen(false)
             setTextQR('0');
-        }else if(textQR !== '0' && textTemp !== '0'){
-            setTextQR(textQR => textQR)
-            CekKehadiran(textQR)
-
+        }else
+        {  
+            checkHadiran(textQR)
         }
-    }, [open, textQR, textTemp, CekKehadiran])
+    }, [open, textQR, textTemp, checkHadiran])
     return (
         <div className='flex flex-row md:w-full h-full md:py-12 justify-center font-sansLight'>
             <div className='md:flex hidden w-full md:h-20 md:py-5 pb-10 pt-4 justify-center items-center md:px-24' >
@@ -214,6 +250,8 @@ const Navbar = ({toggle}) => {
                     <span className="hidden lg:inline-block lg:align-middle lg:h-screen" aria-hidden="true">
                         &#8203;
                     </span>
+
+                    
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -232,6 +270,7 @@ const Navbar = ({toggle}) => {
                                         <div className=' flex-grow-0 overflow-y-auto md:w-24 md:h-20 bg-chocolate text-white justify-center items-center rounded-full -mt-36'>
                                             <img src={IconInv} alt='Tanda' />
                                         </div>
+                                        
                                         <Dialog.Title as="h1" className="md:text-base text-xs font-sans leading-6 font-sans justify-center items-center md:px-4 px-4">
                                             Silahkan masukkan Nomor Handphone kalian untuk membuka QR Code yang di gunakan untuk masuk pada Hari Pernikahan  
                                         </Dialog.Title>
@@ -257,10 +296,10 @@ const Navbar = ({toggle}) => {
                                                 </div>
                                                 <div className='flex flex-col w-auto h-auto justify-center items-center space-y-4 py-4'>
                                                     <h1 className='font-sans text-black text-2xl'>Selamat Datang</h1>
-                                                    <p className='font-sans text-base text-black'>Selamat, Anda telah berhasil mendapatkan Kode QR! Sampai Jumpa di pernikahan kami!</p>
-                                                    <p className='font-sansLight text-base text-black'>QR CODE SOUVENIR</p>
-                                                    <QRCode value={textQR.toString()} />
-                                                    <p className='font-sans text-xs text-red-500'>SILAHKAN SCREENSHOT QR INI UNTUK PENGAMBILAN SOUVENIR PADA SAAT PULANG</p>
+                                                    <p className='font-sans text-base text-black'>Terima kasih, telah menghadiri pernikahan kami </p>
+                                                    {/* <p className='font-sansLight text-base text-black'>QR CODE SOUVENIR</p> */}
+                                                    {/* <QRCode value={textQR.toString()} /> */}
+                                                    {/* <p className='font-sans text-xs text-red-500'>SILAHKAN SCREENSHOT QR INI UNTUK PENGAMBILAN SOUVENIR PADA SAAT PULANG</p> */}
                                                 </div>
                                             </div>
                                         )}
