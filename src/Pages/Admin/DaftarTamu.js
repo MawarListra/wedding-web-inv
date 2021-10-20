@@ -1,9 +1,10 @@
 import React, { useState, useEffect,useCallback } from 'react'
 import Table from '../../Components/Table/Table';
 import * as BoxIcon from "react-icons/bi";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete,AiFillCheckCircle } from "react-icons/ai";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
@@ -72,6 +73,25 @@ function DaftarTamu({ pilih }) {
                 );
             });
     },[tamu]);
+
+    const souvenirCek = useCallback((id) => {
+        const data = {
+            statussouvenir:1
+        }
+        const config = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        };
+        axios
+            .put(`https://api.wedding.chicodefive.com/v1/User/update/${id}`,data, config)
+            .then((response) => {
+               if(response.status===200){
+                window.location.reload();
+               }
+            });
+    },[]);
+
     const COLUMNS = React.useMemo(() => [
         {
             Header: 'No',
@@ -80,16 +100,19 @@ function DaftarTamu({ pilih }) {
                 return <div>{Number(row.row.id) + 1}</div>;
             },
             mystyle: "rounded-l-3xl max-w-kecil",
+            disableFilters: true
         },
         {
             Header: 'Name',
             accessor: 'name',
             mystyle: "max-w-sedang",
+            disableFilters: true
         },
         {
             Header: 'Alamat',
             accessor: 'address',
-            mystyle: "max-w-besar",
+            mystyle: "max-w-besar ",
+            disableFilters: true
         },
         {
             Header: 'Nomor Telepon',
@@ -104,7 +127,8 @@ function DaftarTamu({ pilih }) {
                 return <div className={data.value === '0' ? "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-medium lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
                     {data.value !== '0' ? "Hadir" : "Belum Hadir"}
                 </div>;
-            }
+            },
+            disableFilters: true
         },
         {
             Header: 'Souvenir',
@@ -114,8 +138,8 @@ function DaftarTamu({ pilih }) {
                 return <div className={data.value === '0' ? "flex justify-center rounded-lg mx-auto py-2 font-poppins font-normal lg:text-sm text-xs border bg-abuabu" : "flex justify-center rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border bg-hijaumuda"}>
                     {data.value !== '0' ? "Sudah" : "Belum"}
                 </div>;
-            }
-
+            },
+            disableFilters: true
         },
         {
             mystyle: "max-w-besar",
@@ -128,6 +152,7 @@ function DaftarTamu({ pilih }) {
                     </button>
                 </div>;
             },
+            disableFilters: true
         },
         {
             mystyle: "rounded-r-3xl max-w-sedang",
@@ -135,17 +160,20 @@ function DaftarTamu({ pilih }) {
             Header: ' ',
             accessor: "id",
             Cell: (data) => {
-                return <div className="flex justify-between">
+                return <div className="flex space-x-10">
                     <Link to={`/edittamu/${data.value}`}>
                         <BoxIcon.BiEdit className="text-warnaborder text-2xl items-center p-0" />
                     </Link>
                     <button onClick={() => deleteUser(data.value)}>
                         <AiOutlineDelete className="text-warnaborder text-2xl items-center" />
                     </button>
+                    <button onClick={() => souvenirCek(data.value)}>
+                        <AiFillCheckCircle className="text-warnaborder text-2xl items-center" />
+                    </button>
                 </div>;
             },
         },
-    ],[deleteUser]
+    ],[deleteUser,souvenirCek]
     );
 
     return (

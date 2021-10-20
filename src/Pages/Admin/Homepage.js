@@ -8,6 +8,7 @@ import { MdOutlineLogout } from "react-icons/md";
 import { RiBarChart2Line } from "react-icons/ri";
 import walletIconcolor from "../../Images/walletIconcolor.png";
 import walletIcon from "../../Images/walletIcon.png";
+import LogoWedding from "../../Images/LogoWedding.png";
 
 export default function Homepage() {
     const [isClose, setClosed] = React.useState(false);
@@ -33,8 +34,8 @@ export default function Homepage() {
 
                 < aside className="bg-white w-64 min-h-screen flex flex-col ">
                     <div className="bg-white border-r px-4 h-24 flex items-center justify-end">
-                        <span className="text-blue px-20">
-                            Logo
+                        <span className="text-blue px-10 ">
+                            <img alt="logo" src={LogoWedding}/>
                         </span>
                         {isClose ? (
                             <div></div>

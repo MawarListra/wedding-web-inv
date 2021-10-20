@@ -1,15 +1,21 @@
-import React from "react";
-import { useTable, useGlobalFilter, usePagination } from "react-table";
+import React,{useMemo} from "react";
+import { useTable, useGlobalFilter, usePagination, useFilters } from "react-table";
 
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import GlobalFilter from "./GlobalFilter";
 import ModalForm from "./ModalForm";
+import { ColumnFilter } from "./ColumnFilter";
 
 
 
 function Table({ columns, data, pilih, banyak }) {
+    const defaultColumn = useMemo(() => {
+        return{
+            Filter:ColumnFilter
+        }
+    },[])
     const {
         getTableProps,
         getTableBodyProps,
@@ -28,10 +34,12 @@ function Table({ columns, data, pilih, banyak }) {
     } = useTable({
         columns,
         data,
-        initialState: { pageSize: 10 }
-    }, useGlobalFilter, usePagination
+        defaultColumn,
+        initialState: { pageSize: 10 },
+    }, useFilters,useGlobalFilter, usePagination
     )
-
+    
+  
     const [indexs, setIndex] = React.useState(0);
     const pageNumber = [];
     const [last, setLast] = React.useState(4);
@@ -63,7 +71,7 @@ function Table({ columns, data, pilih, banyak }) {
                     </div>
                     <div className="border-b-2"></div>
                     <div className="text-base font-poppins font-normal mt-3">
-                    {banyak.resultSouvenir} dari {data.length} Tamu telah dapat Souvenir
+                        {banyak.resultSouvenir} dari {data.length} Tamu telah dapat Souvenir
                     </div>
                 </div>) : (<div>
                     <div className="text-2xl font-poppins font-semibold text-primary mt-5">
@@ -86,7 +94,7 @@ function Table({ columns, data, pilih, banyak }) {
                 </button>)}
             </div>
             <ModalForm open={open} closeModal={setOpen} />
-            
+
             <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="overflow-hidden sm:rounded-lg">
@@ -102,11 +110,10 @@ function Table({ columns, data, pilih, banyak }) {
                                             <th
                                                 // scope="col"
                                                 className="px-6 py-3 text-left text-lg font-normal font-poppins tracking-wider"
-                                                {...column.getHeaderProps(
-                                                )}
+                                                {...column.getHeaderProps()}
                                             >
                                                 {column.render("Header")}
-
+                                                <div>{column.canFilter?column.render('Filter'):null}</div>
                                             </th>
                                         ))}
                                     </tr>
@@ -126,7 +133,7 @@ function Table({ columns, data, pilih, banyak }) {
                                                     <td
                                                         {...cell.getCellProps({
                                                         })}
-                                                        className={"px-6 py-4 border-white border-b-8 " + cell.column.mystyle}
+                                                        className={"px-6 py-4 border-white border-b-8 break-all " + cell.column.mystyle}
                                                     >
                                                         <p className={cell.column.className}>{cell.render("Cell")}</p>
                                                     </td>

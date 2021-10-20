@@ -32,22 +32,26 @@ function UcapanDoa({pilih}) {
                 return <div>{Number(row.row.id) + 1}</div>;
             },
             mystyle: "rounded-l-3xl max-w-kecil",
+            disableFilters: true
         },
         {
             Header: 'Name',
             accessor: 'name',
             mystyle: "max-w-sedang",
+            disableFilters: true
         },
         {
             Header: 'Ucapan dan Doa',
             accessor: 'message',
             mystyle: "max-w-sedang",
-            className: "truncate"
+            className: "truncate",
+            disableFilters: true
         },
         {
             Header: 'Template',
             accessor: 'tempelate',
             mystyle: "max-w-kecil",
+            disableFilters: true
         },
         {
             mystyle: "rounded-r-3xl max-w-sedang",
@@ -60,6 +64,7 @@ function UcapanDoa({pilih}) {
                     </Link>
                 </div>;
             },
+            disableFilters: true
         },
     ],[]
     );
