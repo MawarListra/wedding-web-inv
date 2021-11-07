@@ -104,13 +104,7 @@ function DaftarTamu({ pilih }) {
         {
             Header: 'Name',
             accessor: 'name',
-            mystyle: "max-w-sedang",
-            disableFilters: true
-        },
-        {
-            Header: 'Alamat',
-            accessor: 'address',
-            mystyle: "max-w-besar ",
+            mystyle: "max-w-besar",
             disableFilters: true
         },
         {

@@ -34,13 +34,13 @@ module.exports = {
         'pemberkatan-image' : "url('Images/Rectangle 8.png')",
         'protokol-image' : "url('Images/Flower Long.png')",
         'footer-image' : "url('Images/Rectangle 30.png')",
+      },
+      maxWidth: {
+        kecil: '30px',
+        sedang: '100px',
+        besar: '170px',
       }
     },
-    maxWidth: {
-      kecil: '30px',
-      sedang: '100px',
-      besar: '170px',
-    }
   },
   variants: {
     extend: {},

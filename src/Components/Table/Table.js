@@ -110,7 +110,7 @@ function Table({ columns, data, pilih, banyak,headers }) {
                                         {headerGroup.headers.map((column) => (
                                             <th
                                                 // scope="col"
-                                                className="px-6 py-3 text-left text-lg font-normal font-poppins tracking-wider"
+                                                className={"px-6 py-3 text-left text-lg font-normal font-poppins tracking-wider "}
                                                 {...column.getHeaderProps()}
                                             >
                                                 {column.render("Header")}

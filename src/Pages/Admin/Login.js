@@ -46,7 +46,7 @@ export default class Login extends Component {
       <div className="items-center bg-gradient-to-l from-blue-500 to-black font-monserat">
          <Toaster/>
         <div className="flex h-screen">
-        <div className="w-1/3 m-auto">
+        <div className="w-full max-w-md m-auto">
           <form
             onSubmit={this.handleSubmit}
             className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
