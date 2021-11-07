@@ -6,6 +6,7 @@ import Login from './Pages/Admin/Login';
 import Homepage from './Pages/Admin/Homepage';
 import EditTamu from './Pages/Admin/EditTamu';
 import Kartu from './Pages/Admin/Kartu';
+import TampilQr from './Pages/Admin/TampilQr';
 function App() {
   return (
    <Router>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/AdminDashboard" component={Homepage} />
         <Route path="/edittamu/:id" component={EditTamu} />
         <Route path="/kartu/:id" component={Kartu} />
+        <Route path="/qr/:id" component={TampilQr} />
        </Switch>
      </div>
    </Router>

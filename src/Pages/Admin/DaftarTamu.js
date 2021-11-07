@@ -9,7 +9,7 @@ const api = process.env.REACT_APP_PUBLIC_URL
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
     const [count,setCount] = useState([]);
-
+    
 
     useEffect(() => {
         const config = {
@@ -134,26 +134,27 @@ function DaftarTamu({ pilih }) {
             },
             disableFilters: true
         },
+        // {
+        //     mystyle: "max-w-besar",
+        //     Header: '',
+         
+        //     Cell: (data) => {
+        //         return <div>
+                  
+        //         </div>;
+        //     },
+        //     disableFilters: true
+        // },
         {
-            mystyle: "max-w-besar",
-            Header: 'QR Code',
-            accessor: "code",
-            Cell: (data) => {
-                return <div>
-                    <button className="rounded-lg mx-auto py-2 px-6 font-poppins font-normal lg:text-sm text-xs border-2 border-warnaborder">
-                        Lihat QR
-                    </button>
-                </div>;
-            },
-            disableFilters: true
-        },
-        {
-            mystyle: "rounded-r-3xl max-w-sedang",
+            mystyle: "rounded-r-3xl",
             width: 20,
-            Header: ' ',
+            Header: 'QR Code',
             accessor: "id",
             Cell: (data) => {
-                return <div className="flex space-x-10">
+                return <div className="flex space-x-10 items-center">
+                   <Link to={`/qr/${data.value}`} target='_blank' className="rounded-lg py-2 px-6 font-poppins font-normal lg:text-sm text-xs border-2 border-warnaborder">
+                        Lihat QR
+                    </Link>
                     <Link to={`/edittamu/${data.value}`}>
                         <BoxIcon.BiEdit className="text-warnaborder text-2xl items-center p-0" />
                     </Link>
