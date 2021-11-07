@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import {AiOutlineEyeInvisible,AiOutlineEye} from "react-icons/ai"
 
+const url = process.env.REACT_APP_PUBLIC_URL
 export default class Login extends Component {
   state = { isOpen: false };
 
@@ -25,7 +26,7 @@ export default class Login extends Component {
     };
 
     axios
-      .post("https://api.wedding.chicodefive.com/v1/Admin/login", data,headers)
+      .post(`${url}/v1/Admin/login`, data,headers)
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);

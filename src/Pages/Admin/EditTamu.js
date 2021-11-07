@@ -11,7 +11,7 @@ function EditTamu() {
     const [alamat, setAlamat] = React.useState('');
     const [hadir, setHadir] = React.useState('');
     const [sovenir, setSovenir] = React.useState('');
-    const url = "https://api.wedding.chicodefive.com";
+    const url = process.env.REACT_APP_PUBLIC_URL;
     const { id } = useParams();
 
 
@@ -38,7 +38,7 @@ function EditTamu() {
             }).catch((err) => {
                 console.log(err);
             })
-    },[id]);
+    },[id,url]);
 
     const editUser = async (e) => {
         e.preventDefault();

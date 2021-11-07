@@ -3,6 +3,7 @@ import Table from '../../Components/Table/Table';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+const api = process.env.REACT_APP_PUBLIC_URL
 function UcapanDoa({pilih}) {
     const [undangan, setUndangan] = useState([]);
 
@@ -13,7 +14,7 @@ function UcapanDoa({pilih}) {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }
-        axios.get('https://api.wedding.chicodefive.com/v1/Undangan/getall', config)
+        axios.get(`${api}/v1/Undangan/getall`, config)
             .then(response => {
                 setUndangan(response.data.data);
                 console.log(response.data.data);

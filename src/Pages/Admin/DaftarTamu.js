@@ -5,7 +5,7 @@ import { AiOutlineDelete,AiFillCheckCircle } from "react-icons/ai";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-
+const api = process.env.REACT_APP_PUBLIC_URL
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
     const [count,setCount] = useState([]);
@@ -17,15 +17,14 @@ function DaftarTamu({ pilih }) {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }
-        axios.get('https://api.wedding.chicodefive.com/v1/User/getall', config)
-            .then(response => {
+        axios.get(`${api}/v1/User/getall`, config).then(response => {
                 setTamu(response.data.data);
                 console.log(response.data.data);
             }).catch((err) => {
                 console.log(err);
             })
             
-        axios.get('https://api.wedding.chicodefive.com/v1/User/getallcounter', config)
+        axios.get(`${api}/v1/User/getallcounter`, config)
             .then(response => {
                 setCount(response.data);
                 console.log(response.data);
@@ -64,7 +63,7 @@ function DaftarTamu({ pilih }) {
             },
         };
         axios
-            .delete(`https://api.wedding.chicodefive.com/v1/User/delete/${id}`, config)
+            .delete(`${api}/v1/User/delete/${id}`, config)
             .then((response) => {
                 setTamu(
                     tamu.filter((val) => {
@@ -84,7 +83,7 @@ function DaftarTamu({ pilih }) {
             },
         };
         axios
-            .put(`https://api.wedding.chicodefive.com/v1/User/update/${id}`,data, config)
+            .put(`${api}/v1/User/update/${id}`,data, config)
             .then((response) => {
                if(response.status===200){
                 window.location.reload();

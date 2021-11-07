@@ -14,7 +14,7 @@ function Kartu() {
 
     const { id } = useParams();
 
-    const url = "https://api.wedding.chicodefive.com";
+    const url = process.env.REACT_APP_PUBLIC_URL
     useEffect(() => {
         getUserById();
         //console.log(id);
