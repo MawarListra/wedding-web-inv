@@ -72,7 +72,7 @@ function ModalForm({ closeModal, open }) {
                             leaveFrom="opacity-100 translate-y-0 lg:scale-100"
                             leaveTo="opacity-0 translate-y-4 lg:translate-y-0 lg:scale-95"
                         >
-                            <div className="bg-white border rounded-3xl inline-block text-left shadow-xl transform transition-all lg:my-8 lg:align-middle lg:max-w-lg lg:w-auto">
+                            <div className="bg-white border rounded-3xl inline-block text-left shadow-xl transform transition-all lg:my-8 lg:align-middle lg:w-auto">
                                 <Dialog.Title className="flex justify-between leading-6 font-poppins text-xl text-center px-6 py-5">
                                    Buat tamu undangan
                                     <TiDelete onClick={() => closeModal(false)} className="text-abuabu text-3xl" />
