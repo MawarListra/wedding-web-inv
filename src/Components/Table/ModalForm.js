@@ -11,7 +11,7 @@ function ModalForm({ closeModal, open }) {
     const [nama, setNama] = React.useState('');
     const [noTlp, setNoTlp] = React.useState('');
     const [alamat, setAlamat] = React.useState('');
-    const url = "https://api.wedding.chicodefive.com";
+    const url = process.env.REACT_APP_PUBLIC_URL;
 
 
     const addUser = async (e) => {
