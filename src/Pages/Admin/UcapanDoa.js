@@ -9,6 +9,18 @@ function UcapanDoa({pilih}) {
 
 
     useEffect(() => {
+        getData()
+        const interval = setInterval(() => {
+
+            getData()
+            }, 1000);
+        
+           return () => clearInterval(interval);
+        
+
+        
+    }, [])
+    const getData=()=>{
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
@@ -21,9 +33,7 @@ function UcapanDoa({pilih}) {
             }).catch((err) => {
                 console.log(err);
             })
-
-        
-    }, [])
+    }
     const headers = React.useMemo(() => [
         {
             label: 'Name',

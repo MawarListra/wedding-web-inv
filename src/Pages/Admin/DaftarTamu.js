@@ -1,29 +1,51 @@
-import React, { useState, useEffect,useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Table from '../../Components/Table/Table';
 import * as BoxIcon from "react-icons/bi";
-import { AiOutlineDelete,AiFillCheckCircle } from "react-icons/ai";
+import { AiOutlineDelete, AiFillCheckCircle } from "react-icons/ai";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const api = process.env.REACT_APP_PUBLIC_URL
 function DaftarTamu({ pilih }) {
     const [tamu, setTamu] = useState([]);
-    const [count,setCount] = useState([]);
-    
+    const [count, setCount] = useState([]);
+
 
     useEffect(() => {
+        getData()
+        getCount()
+
+
+
+        const interval = setInterval(() => {
+
+            getData()
+            getCount()
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, [])
+    const getData = () => {
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }
         axios.get(`${api}/v1/User/getall`, config).then(response => {
-                setTamu(response.data.data);
-                console.log(response.data.data);
-            }).catch((err) => {
-                console.log(err);
-            })
-            
+            setTamu(response.data.data);
+            console.log(response.data.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const getCount = () => {
+        const config = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        }
+
         axios.get(`${api}/v1/User/getallcounter`, config)
             .then(response => {
                 setCount(response.data);
@@ -31,9 +53,7 @@ function DaftarTamu({ pilih }) {
             }).catch((err) => {
                 console.log(err);
             })
-
-    }, [])
-
+    }
     // const getUserById = async (id) => {
 
     //     const config = {
@@ -71,11 +91,11 @@ function DaftarTamu({ pilih }) {
                     })
                 );
             });
-    },[tamu]);
+    }, [tamu]);
 
     const souvenirCek = useCallback((id) => {
         const data = {
-            statussouvenir:1
+            statussouvenir: 1
         }
         const config = {
             headers: {
@@ -83,13 +103,22 @@ function DaftarTamu({ pilih }) {
             },
         };
         axios
-            .put(`${api}/v1/User/update/${id}`,data, config)
+            .put(`${api}/v1/User/update/${id}`, data, config)
             .then((response) => {
-               if(response.status===200){
-                window.location.reload();
-               }
+                if (response.status === 200) {
+                    //    console.log(response.data.data);
+                    //    let jsonData = response.data.data
+                    //    let jsonDataid = response.data.data.id
+                    //     tamu.map((value,i)=>{
+                    //         setTamu(
+                    //             return tamu.splice(i,1,jsonData)
+                    //         );
+                    //     })
+
+                    //window.location.reload();
+                }
             });
-    },[]);
+    }, []);
 
     const COLUMNS = React.useMemo(() => [
         {
@@ -137,10 +166,10 @@ function DaftarTamu({ pilih }) {
         // {
         //     mystyle: "max-w-besar",
         //     Header: '',
-         
+
         //     Cell: (data) => {
         //         return <div>
-                  
+
         //         </div>;
         //     },
         //     disableFilters: true
@@ -152,7 +181,7 @@ function DaftarTamu({ pilih }) {
             accessor: "id",
             Cell: (data) => {
                 return <div className="flex space-x-10 items-center">
-                   <Link to={`/qr/${data.value}`} target='_blank' className="rounded-lg py-2 px-6 font-poppins font-normal lg:text-sm text-xs border-2 border-warnaborder">
+                    <Link to={`/qr/${data.value}`} target='_blank' className="rounded-lg py-2 px-6 font-poppins font-normal lg:text-sm text-xs border-2 border-warnaborder">
                         Lihat QR
                     </Link>
                     <Link to={`/edittamu/${data.value}`}>
@@ -167,7 +196,7 @@ function DaftarTamu({ pilih }) {
                 </div>;
             },
         },
-    ],[deleteUser,souvenirCek]
+    ], [deleteUser, souvenirCek]
     );
 
     return (
