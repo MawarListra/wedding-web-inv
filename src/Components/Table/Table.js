@@ -7,10 +7,11 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import GlobalFilter from "./GlobalFilter";
 import ModalForm from "./ModalForm";
 import { ColumnFilter } from "./ColumnFilter";
+import { CSVLink } from "react-csv";
 
 
 
-function Table({ columns, data, pilih, banyak }) {
+function Table({ columns, data, pilih, banyak,headers }) {
     const defaultColumn = useMemo(() => {
         return{
             Filter:ColumnFilter
@@ -89,9 +90,9 @@ function Table({ columns, data, pilih, banyak }) {
                 {pilih === 0 ? (<button onClick={() => setOpen(true)} className="flex items-center rounded-xl pr-12 pl-6 bg-warnarow font-poppins text-primary font-normal text-base border-2 border-primary h-20 mt-7">
                     <AiOutlinePlusCircle className="text-2xl mr-3" />
                     Bikin Tamu
-                </button>) : (<button className="flex items-center rounded-xl px-9 bg-warnarow font-poppins text-primary font-normal text-base border-2 border-primary h-20 mt-7">
+                </button>) : (<CSVLink data={data} headers={headers} className="flex items-center rounded-xl px-9 bg-warnarow font-poppins text-primary font-normal text-base border-2 border-primary h-20 mt-7">
                     Download CSV
-                </button>)}
+                </CSVLink>)}
             </div>
             <ModalForm open={open} closeModal={setOpen} />
 

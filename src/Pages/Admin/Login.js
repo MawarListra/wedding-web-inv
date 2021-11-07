@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import {AiOutlineEyeInvisible,AiOutlineEye} from "react-icons/ai"
+import {toast, Toaster} from 'react-hot-toast'
 
 const url = process.env.REACT_APP_PUBLIC_URL
 export default class Login extends Component {
@@ -37,12 +38,13 @@ export default class Login extends Component {
       })
       .catch((err) => {
         console.log(err);
-        this.setState(alert('Username atau Password salah.'))
+        toast.error("Username atau Password Salah!!");
       });
   };
   render() {
     return (
       <div className="items-center bg-gradient-to-l from-blue-500 to-black font-monserat">
+         <Toaster/>
         <div className="flex h-screen">
         <div className="w-1/3 m-auto">
           <form

@@ -24,7 +24,17 @@ function UcapanDoa({pilih}) {
 
         
     }, [])
-
+    const headers = React.useMemo(() => [
+        {
+            label: 'Name',
+            key: 'name',
+           
+        },
+        {
+            label: 'Ucapan dan Doa',
+            key: 'message',
+        },
+    ],[]);
     const COLUMNS = React.useMemo(() => [
         {
             Header: 'No',
@@ -72,7 +82,7 @@ function UcapanDoa({pilih}) {
 
     return (
         <div className="mx-10">
-            <Table columns={COLUMNS} data={undangan} pilih={pilih} />
+            <Table columns={COLUMNS} data={undangan} pilih={pilih} headers={headers} />
         </div>
     )
 }
