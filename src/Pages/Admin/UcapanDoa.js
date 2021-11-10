@@ -10,12 +10,12 @@ function UcapanDoa({pilih}) {
 
     useEffect(() => {
         getData()
-        const interval = setInterval(() => {
+        // const interval = setInterval(() => {
 
-            getData()
-            }, 1000);
+        //     getData()
+        //     }, 1000);
         
-           return () => clearInterval(interval);
+        //    return () => clearInterval(interval);
         
 
         

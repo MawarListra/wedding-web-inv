@@ -17,13 +17,13 @@ function DaftarTamu({ pilih }) {
 
 
 
-        const interval = setInterval(() => {
+        // const interval = setInterval(() => {
 
-            getData()
-            getCount()
-        }, 1000);
+        //     getData()
+        //     getCount()
+        // }, 1000);
 
-        return () => clearInterval(interval);
+        // return () => clearInterval(interval);
 
     }, [])
     const getData = () => {
@@ -106,15 +106,7 @@ function DaftarTamu({ pilih }) {
             .put(`${api}/v1/User/update/${id}`, data, config)
             .then((response) => {
                 if (response.status === 200) {
-                    //    console.log(response.data.data);
-                    //    let jsonData = response.data.data
-                    //    let jsonDataid = response.data.data.id
-                    //     tamu.map((value,i)=>{
-                    //         setTamu(
-                    //             return tamu.splice(i,1,jsonData)
-                    //         );
-                    //     })
-
+                       getData()
                     //window.location.reload();
                 }
             });
@@ -181,6 +173,9 @@ function DaftarTamu({ pilih }) {
             accessor: "id",
             Cell: (data) => {
                 return <div className="flex space-x-10 items-center">
+                    <div>
+                        {data.value}
+                    </div>
                     <Link to={`/qr/${data.value}`} target='_blank' className="rounded-lg py-2 px-6 font-poppins font-normal lg:text-sm text-xs border-2 border-warnaborder">
                         Lihat QR
                     </Link>
